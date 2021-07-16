@@ -27,7 +27,7 @@ namespace loganywhere
         private void Form1_Load(object sender, EventArgs e)
         {
             sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            iep1 = new IPEndPoint(IPAddress.Parse("172.21.0.25"), 9050);
+            iep1 = new IPEndPoint(IPAddress.Parse(this.textBox1.Text), 9050);
             sock.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Broadcast, 1);
         }
 
@@ -37,6 +37,18 @@ namespace loganywhere
             data = Encoding.ASCII.GetBytes(hostname);
             sock.SendTo(data, iep1);
             this.label1.Text = hostname;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            iep1 = new IPEndPoint(IPAddress.Parse(this.textBox1.Text), 9050);
+            sock.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Broadcast, 1);
         }
     }
 }
