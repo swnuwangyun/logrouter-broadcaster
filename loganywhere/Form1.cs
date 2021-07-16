@@ -27,7 +27,7 @@ namespace loganywhere
         private void Form1_Load(object sender, EventArgs e)
         {
             sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            iep1 = new IPEndPoint(IPAddress.Broadcast, 9050);
+            iep1 = new IPEndPoint(IPAddress.Parse("172.21.0.25"), 9050);
             sock.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Broadcast, 1);
         }
 
